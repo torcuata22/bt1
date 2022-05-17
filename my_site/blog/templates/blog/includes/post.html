@@ -5,12 +5,13 @@
 
     <li>
         <article class="post">
-            <a href="{% url 'post-detail-page' 'blog-post' %}">
-                 <!-- <img src="{% static 'blog/images/pic1.jpg' %}" alt="Mountain Hiking"> -->
+            <a href="{% url 'post-detail-page' post.slug %}">
+                 <!-- <img src="{% static 'blog/images/'|add:post.image %}" alt="{{ post.title }}">-->
                 <div class="post__content"></div>
-                <h3>Blog post number one</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti laborum optio dolorem doloribus. 
-                    Culpa explicabo repudiandae quo architecto repellendus quaerat nulla, accusamus, in officiis alias pariatur.</p>
+                <h3>{{ post.title }}</h3>
+                <p>
+                    {{ post.excerpt }}
+                </p>
             </a>
         </article>
     </li>
