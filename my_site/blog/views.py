@@ -1,4 +1,18 @@
 from django.shortcuts import render
+from datetime import date
+
+posts=[
+    {
+        "slug":"hike-in-the-mountains",
+        "image": "mounatins.jpg",
+        "author":"Marilyn",
+        "date": date(2022, 5, 17),
+        "title":"Mountin Hiking",
+        "excerpt": "Nothing beats the view from the top of a mountain"
+        
+    }
+    
+]
 
 # Create your views here.
 def starting_page(request):
