@@ -7,7 +7,7 @@ from django.core.validators import MinLengthValidator
 # Create your models here.
 
 class Tag(models.Model):
-    caption=models.CharField(max_length=25) 
+    caption=models.CharField(max_length=20) 
 
 class Author(models.Model):
     first_name=models.CharField(max_length=50)
@@ -23,7 +23,7 @@ class Post(models.Model):
     date= models.DateField(auto_now=True) #it records date every time we modify field in the DB
     slug=models.SlugField(unique=True)#unique because I want to use it as an identifier
     content=models.TextField(validators=[MinLengthValidator(10)])
-    tag=models.ManyToManyField(Tag)
+    tags=models.ManyToManyField(Tag)
     
     def __str__(self):
         return f"{self.title}"
