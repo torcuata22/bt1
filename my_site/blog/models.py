@@ -34,12 +34,12 @@ class Post(models.Model):
     content=models.TextField(validators=[MinLengthValidator(10)])
     tags=models.ManyToManyField(Tag)
     
-    def __str__(self):
-        return f"{self.title}"
+    # def __str__(self):
+    #     return f"{self.title}"
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super().save(*args, **kwargs)
         
 
 
