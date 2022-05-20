@@ -17,10 +17,10 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     author=models.ForeignKey(Author, on_delete=CASCADE)
-    excerpt= models.TextField()
-    image_name = models.CharField(max_length=200)
-    date= models.DateField(auto_now=False, auto_now_add=False)
-    slug=models.SlugField(default="", null=False)
+    excerpt= models.CharField(max_length=200)
+    image_name = models.CharField(max_length=100) #temporary
+    date= models.DateField(auto_now=True) #it records date every time we modify field in the DB
+    slug=models.SlugField(unique=True)#unique because I want to use it as an identifier
     content=models.TextField()
     tag=models.ManyToManyField(Tag)
     
