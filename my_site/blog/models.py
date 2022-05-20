@@ -17,7 +17,7 @@ class Author(models.Model):
     
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    author=models.ForeignKey(Author, on_delete=models.SET_NULL, related_name="posts") #sets field to null if we delete related author, so we cna use "posts" instead of post_set for inverse querying
+    author=models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name="posts") #sets field to null if we delete related author, so we cna use "posts" instead of post_set for inverse querying
     excerpt= models.CharField(max_length=200)
     image_name = models.CharField(max_length=100) #temporary
     date= models.DateField(auto_now=True) #it records date every time we modify field in the DB
