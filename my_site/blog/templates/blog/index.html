@@ -6,28 +6,40 @@ My Blog
 {% endblock %}
 
 {% block css_files %}
-<link rel="stylesheet" href='{% static "blog/post.css%" }'>
 <link rel="stylesheet" href='{% static "blog/index.css" %}'>
 {% endblock %}
 
 {% block content %}
 
+    <header id="main-navigation">
+        <h1><a href="">Marilyn's Blog</a></h1>
+        <nav>
+            <a href="">All Posts</a>
+        </nav>
+    </header>
+
 
 <section id="welcome">
     <header>
-        <img src="{% static 'blog/images/pic4.jpg' %}" alt="Marilyn -Author of this blog">
-        <h2>MY BLOG</h2><br/>
-        
-
-        <p>Hello, my name is Marilyn and this is my blog about...</p>
+    <img src="{% static 'blog/images/pic4.jpg' %}" alt="Marilyn -Author of this blog">
+    <h2><a href="#">MY BLOG</a></h2><br/>
     </header>
+    <p>Hello, my name is Marilyn and this is my blog about...</p>
 </section>
+
 <section id="latest-posts">
     <h2>My latest thoughts</h2>
     <ul>
-        {% for post in posts %}
-        {% include "blog/includes/post.html" %}
-        {% endfor %}
+        <li>
+                <a id="" href="#">
+                <img src="{% static 'blog/images/mountains.jpg' %}" alt="Mountain Hiking" />
+                <div class="post__content">
+                {% for post in posts %}
+                {% include "blog/includes/post.html" %}
+                {% endfor %}
+                </div>
+            </a>
+        </li>
     </ul>
 </section>
 <section id="about">
