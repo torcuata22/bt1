@@ -1,7 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.views.generic import ListView
 
 # Create your views here.
+
+class StartingPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post #we need to override 2 methods here because home page doens't display ALL of the post, only 3 most recent ones
+    ordering = ["-date"] #list of fields I want to use to order the data
+    
+    def get_queryset(self):
+        queryset = super().get_queryset() #default fetches all posts
+        data = queryset [:3] #limits number of posts fetched to only 3
+        return data
+    
 def starting_page(request):
     latest_posts=Post.objects.all().order_by("-date")[:3] #Django doesn't support negtive indexing in this case 
     return render (request, "blog/index.html", {
