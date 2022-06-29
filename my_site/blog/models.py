@@ -28,7 +28,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     author=models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name="posts") #sets field to null if we delete related author, so we cna use "posts" instead of post_set for inverse querying
     excerpt= models.CharField(max_length=200)
-    image_name = models.CharField(max_length=100) #temporary
+    image= models.ImageField(upload_to="posts", null=True) #allows null values here
     date= models.DateField(auto_now=True) #it records date every time we modify field in the DB
     slug=models.SlugField(unique=True)#unique because I want to use it as an identifier
     content=models.TextField(validators=[MinLengthValidator(10)])
