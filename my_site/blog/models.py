@@ -43,8 +43,8 @@ class Post(models.Model):
     #     super().save(*args, **kwargs)
     
 class Comment(models.Model):
-    user_name = models.CharField(max_length=200)
-    user_email = models.EmailField()
+    user_name = models.CharField(max_length=200) #I want this to use label Your Name in the form
+    user_email = models.EmailField() #And this to use label Your Email
     text = models.TextField(max_length=400)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name = "comments")
     

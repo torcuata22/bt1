@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
 from django.views.generic import ListView, DetailView
+
+from .models import Post
+from .forms import CommentForm
 
 # Create your views here.
 
@@ -28,6 +30,7 @@ class SinglePostView(DetailView):
         def get_context_data(self, **kwargs):
              context = super().get_context_data(**kwargs)
              context["post_tags"] = self.object.tags.all() #access all tags for the post and expose it through our context
+             context["comment_form"] = CommentForm() #setus up form
              return context
         
 
