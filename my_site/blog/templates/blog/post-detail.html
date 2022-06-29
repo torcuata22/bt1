@@ -15,7 +15,7 @@
     <h2>{{ post.title }}</h2>
     <div>
         {% for tag in post_tags %}
-        <span class="tag">{{ tag.caption }}</span>
+        <button class="tag-btn"><span class="tag">{{ tag.caption }}</span></button>
         {% endfor %}
 
 
