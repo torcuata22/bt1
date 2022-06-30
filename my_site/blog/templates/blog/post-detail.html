@@ -15,11 +15,10 @@
     <h2>{{ post.title }}</h2>
     <div>
         {% for tag in post_tags %}
-        <button class="tag-btn"><span class="tag">{{ tag.caption }}</span></button>
+        <div class="tag-div"><span class="tag">{{ tag.caption }}</span></div>
         {% endfor %}
-
-
     </div>
+
     <article>
         <img src="{{ post.image.url }}" alt="{{ post.title }}" />
         <address> By <a href="mailto:{{ post.author.email_address }}">{{ post.author}}</a></address>
@@ -35,16 +34,18 @@
 
 </main>
 
-<div>
-    <form id="comment-form">
+<section id="comment-form">
+    <h2>Leave a comment</h2>
+    <form>
+        {% csrf_token %}
         {% for form_field in comment_form %}
         <div class="form-control">
             {{ form_field.label_tag }}
             {{ form_field }}
             {{ form_field.errors }}
         </div>
-        {% endform %}
+        {% endfor %}
         <button>Save Comment</button>
     </form>
-</div>
+</section>
 {% endblock %}
