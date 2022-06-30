@@ -40,8 +40,9 @@ class SinglePostView(View):
             comment_form = CommentForm(request.POST)
             post = Post.objects.get(slug=slug)
             if comment_form.is_valid():
-                comment = comment_form.save() #we can do this becuase the form is based on a model
+                comment = comment_form.save(commit=False)
                 comment.post = post
+                comment.save()
                 return HttpResponseRedirect(reverse("post-detail-page", args=[slug])) #slug is already part of url, functions as id
            
             #this is what happens if the form is invalid
