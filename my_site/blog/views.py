@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import ListView
 from django.views import View
 
@@ -34,8 +36,11 @@ class SinglePostView(View):
             }
             return render (request, "blog/post-detail.html", context)
             
-        def post(self., request):
-            
+        def post(self, request):
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment_form.save() #we can do this becuase the form is based on a model
+                return HttpResponseRedirect(reverse)
             
         
         
