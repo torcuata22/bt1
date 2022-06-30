@@ -40,7 +40,7 @@ class SinglePostView(View):
             comment_form = CommentForm(request.POST)
             if comment_form.is_valid():
                 comment_form.save() #we can do this becuase the form is based on a model
-                return HttpResponseRedirect(reverse)
+                return HttpResponseRedirect(reverse("post-detail-page"))
             
         
         
