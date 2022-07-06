@@ -33,7 +33,7 @@ class SinglePostView(View):
                 "post":post,
                 "post_tags": post.tags.all(),
                 "comment_form": CommentForm(),  #object generated after info goes in the form (comment_form is the empty form to be filled)   
-                "comments": post.comments.all() #fetches all comments associated to this comment
+                "comments": post.comments.all().order_by("-id") #fetches all comments associated to this comment
             }
             return render (request, "blog/post-detail.html", context)
             
@@ -50,7 +50,8 @@ class SinglePostView(View):
             context={
                 "post":post,
                 "post_tags": post.tags.all(),
-                "comment_form": comment_form
+                "comment_form": comment_form,
+                "comments": post.comments.all().order_by("-id") #do it here, to, in case of failed validation
             }
             return render (request, "blog/post-detail.html", context)
         
