@@ -56,6 +56,20 @@ class SinglePostView(View):
             return render (request, "blog/post-detail.html", context)
         
 class ReadLaterView(View):
+    #add GET method so we can use this view for the stored-posts template
+    def get(self, request):
+        stored_posts = request.session.get("stored_posts")
+        context={}
+        if stored_posts is None or len(stored_posts)==0: #in case list is empty
+            context["posts"] = []
+            context["has_posts"]=False
+        else: #if list is not empty we need to reach out to DB using post model (already imported)
+           posts = Post.objects.filter(id__in=stored_posts) 
+           context["posts"]=posts
+           context["has_posts"]=True 
+           
+        return render(request, "blog/stored-posts.html", context)
+        
     def post(self, request):
         stored_posts = request.session.get("stored_posts") #will return none if there are no saved posts
         
@@ -65,6 +79,7 @@ class ReadLaterView(View):
         #Before appending post, make sure it wasn't already appended, so add if check:
         if post_id not in stored_posts:
              stored_posts.append(post_id)
+             request.session["stored_posts"] = stored_posts
         return HttpResponseRedirect("/")
         
 
