@@ -35,8 +35,8 @@ class Post(models.Model):
     content=models.TextField(validators=[MinLengthValidator(10)])
     tags=models.ManyToManyField(Tag)
     
-    # def __str__(self):
-    #     return f"{self.title}"
+    def __str__(self):
+        return self.title #overwrite this so the title of the post shows in the comments admin page instead of "object"
     
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)
