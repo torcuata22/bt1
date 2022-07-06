@@ -57,6 +57,15 @@ class SinglePostView(View):
         
 class ReadLaterView(View):
     def post(self, request):
-        pass
+        stored_posts = request.session.get("stored_posts") #will return none if there are no saved posts
+        
+        if stored_posts is None:
+            stored_posts=[]
+        post_id=int(request.POST["post_id"]) #I don't want to add the whole post, just the id,so create this variable
+        #Before appending post, make sure it wasn't already appended, so add if check:
+        if post_id not in stored_posts:
+             stored_posts.append(post_id)
+        return HttpResponseRedirect("/")
+        
 
     
