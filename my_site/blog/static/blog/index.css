@@ -1,5 +1,5 @@
 #welcome {
-  background: linear-gradient(to right top, #6305dd, #390281);
+  background: linear-gradient(to right top,  #390281, #19016e);
   padding: 6rem 12%;
 }
 
@@ -14,7 +14,7 @@
   height: 10rem;
   object-fit: cover;
   object-position: top;
-  border: 5px solid white;
+  border: 3px solid rgb(234, 248, 251);
   border-radius: 12px;
   background-color: #ffe1bf;
   transform: rotateZ(-5deg);
@@ -61,7 +61,7 @@
 #about {
   text-align: center;
   padding: 3rem;
-  background-color: #e48900;
+  background-color: #390281;
   margin-top: 5rem;
 }
 
@@ -71,5 +71,14 @@
 
 #about p {
   font-size: 1.5rem;
-  color: #353535;
+  color: #dbeef6;
+}
+.title {
+  text-decoration: none;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
