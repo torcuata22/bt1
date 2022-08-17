@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import ListView
 from django.views import View
-
 from .models import Post
 from .forms import CommentForm
 
